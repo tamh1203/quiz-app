@@ -29,7 +29,8 @@ const Quiz = ({questions})=>{
 				score: prev.score + 5,
 				correctAnswers: prev.correctAnswers + 1,
 				}
-			:{
+				:
+				{
 				...prev,
 				wrongAnswers: prev.wrongAnswers + 1,
 			})
@@ -43,7 +44,7 @@ const Quiz = ({questions})=>{
 			}
 	}
 	
-	console.log("currentQuestion", currentQuestion);
+	// console.log("currentQuestion", currentQuestion);
 	
 	return(
 		<div className="quiz-container">
@@ -69,7 +70,7 @@ const Quiz = ({questions})=>{
 			<div className="footer">
 				<button 
 					disabled={answerIdx===null}
-					onClick={()=>onClickNext()}
+					onClick={onClickNext}
 					>
 					{currentQuestion === questions.length - 1 ? "Finish" : "Next"}
 				</button>

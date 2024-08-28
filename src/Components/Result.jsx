@@ -8,6 +8,8 @@ const Result = (props)=>{
 		props.setShowResult(false);
 	}
 
+	console.log("result", result);
+	
 	return(
 		<div className="result">
 		<h3>Result</h3>
