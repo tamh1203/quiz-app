@@ -18,7 +18,7 @@ const Result = (props)=>{
 			<p>Total Corret Answers :<span>{result.correctAnswers}</span>  </p>
 			<p>Total Wrong Answers : <span>{result.wrongAnswers}</span> </p>
 
-			<button onClick={()=>onTryAgain()}> 
+			<button onClick={onTryAgain}> 
 				Try Again
 			</button>
 		</div>

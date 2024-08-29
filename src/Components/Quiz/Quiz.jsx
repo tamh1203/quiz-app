@@ -71,7 +71,7 @@ const Quiz = ({questions})=>{
 				<button 
 					disabled={answerIdx===null}
 					onClick={onClickNext}
-				>
+					>
 					{currentQuestion === questions.length - 1 ? "Finish" : "Next"}
 				</button>
 			</div>				

@@ -1,4 +1,4 @@
-import Quiz from "./Quiz"
+import Quiz from "./Components/Quiz/Quiz"
 import { jsQuizz } from "./constants"
 
 
