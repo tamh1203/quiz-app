@@ -98,7 +98,7 @@ const Quiz = ({questions})=>{
 		(<>
 			{showAnswerTimer && 
 			<AnswerTimer 
-				duration={5}
+				duration={20}
 			 	onTimeUp = {hanleTimeUp}
 			 	setResult = {setResult}
 			 />}
