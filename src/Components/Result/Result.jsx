@@ -32,11 +32,11 @@ const Result = (props)=>{
 	return(
 		<div className="result">
 		<>
-		<h3>Result</h3>
-			<p>Total Question :<span>{questions.length}</span>  </p>
-			<p>Total Scored : <span>{result.score}</span> </p>
-			<p>Total Corret Answers :<span>{result.correctAnswers}</span>  </p>
-			<p>Total Wrong Answers : <span>{result.wrongAnswers}</span> </p>
+		<h3>Kết quả thi</h3>
+			<p>Tổng số câu hỏi :<span>{questions.length}</span>  </p>
+			<p>Số điểm đạt được: <span>{result.score}</span> </p>
+			<p>Số câu trả lời đúng :<span>{result.correctAnswers}</span>  </p>
+			<p>Số câu trả lời sai : <span>{result.wrongAnswers}</span> </p>
 			<button onClick={onTryAgain}> 
 				Try Again
 			</button>
