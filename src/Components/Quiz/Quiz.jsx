@@ -20,11 +20,11 @@ const Quiz = ({questions})=>{
 		}
 	}
 	
-	const onClickNext =()=>{
+	const onClickNext =(finalAnswer)=>{
 		setAnserIdx(null);
 
 		setResult((prev)=>
-			answer ? {
+			finalAnswer ? {
 				...prev,
 				score: prev.score + 5,
 				correctAnswers: prev.correctAnswers + 1,
@@ -70,7 +70,7 @@ const Quiz = ({questions})=>{
 			<div className="footer">
 				<button 
 					disabled={answerIdx===null}
-					onClick={onClickNext}
+					onClick={()=>onClickNext(answer)}
 					>
 					{currentQuestion === questions.length - 1 ? "Finish" : "Next"}
 				</button>
