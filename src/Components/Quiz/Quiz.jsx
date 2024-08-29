@@ -1,6 +1,8 @@
 import { useState } from "react";
-import {resultInitalState} from "./constants"
-import Result from "./Components/Result";
+import {resultInitalState} from "../../constants";
+import Result from "../Result/Result";
+import "./Quiz.scss";
+import AnswerTimer from "../AnswerTimer/AnswerTimer";
 const Quiz = ({questions})=>{
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -8,6 +10,7 @@ const Quiz = ({questions})=>{
 	const [answer, setAnswer] = useState(null);
 	const [result, setResult] = useState(resultInitalState);
 	const [showResult, setShowResult] = useState(false);
+	const [showAnswerTimer, setShowAnswerTimer] = useState(true);
 
 	const {question, choices, correctAnswer} = questions[currentQuestion];
 
@@ -22,6 +25,7 @@ const Quiz = ({questions})=>{
 	
 	const onClickNext =(finalAnswer)=>{
 		setAnserIdx(null);
+		setShowAnswerTimer(false);
 
 		setResult((prev)=>
 			finalAnswer ? {
@@ -42,14 +46,26 @@ const Quiz = ({questions})=>{
 				setCurrentQuestion(0)
 				setShowResult(true);
 			}
+			setTimeout(()=>{
+				setShowAnswerTimer(true);
+			},1000)
 	}
 	
-	// console.log("currentQuestion", currentQuestion);
+	const hanleTimeUp = ()=>{
+		setAnswer(false);
+		onClickNext(false);
+	}
 	
 	return(
 		<div className="quiz-container">
 		{!showResult ? 	
 		(<>
+			{showAnswerTimer && 
+			<AnswerTimer 
+				duration={5}
+			 	onTimeUp = {hanleTimeUp}
+			 	setResult = {setResult}
+			 />}
 			<span className="active-question"> {currentQuestion + 1}</span>
 			<span className="total-question">/{questions.length}</span>
 			<h2>{question}</h2>
@@ -82,7 +98,6 @@ const Quiz = ({questions})=>{
 			questions = {questions}
 			result = {result}
 			setResult = {setResult}
-			showResult= {showResult}
 			setShowResult={setShowResult}
 			 />
 	 </div>

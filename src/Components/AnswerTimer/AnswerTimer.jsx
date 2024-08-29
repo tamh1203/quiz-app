@@ -24,6 +24,7 @@ const AnswerTimer = ({duration, onTimeUp})=>{
             },1000);
         }
     },[counter])
+
     console.log(counter);
     
     return(
@@ -40,7 +41,6 @@ const AnswerTimer = ({duration, onTimeUp})=>{
                 }`
             }}
             className='progress'>
-
             </div>
         </div>
     )

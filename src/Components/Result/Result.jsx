@@ -1,14 +1,15 @@
 import './Result.scss';
-
+import { resultInitalState } from '../../constants';
 const Result = (props)=>{
 
-	const {questions, result, showResult} = props;
+	const {questions, result} = props;
 
 	const onTryAgain =()=>{
+		props.setResult(resultInitalState); // set result => initalState
 		props.setShowResult(false);
 	}
 
-	console.log("result", result);
+	console.log("resultInitalState", resultInitalState);
 	
 	return(
 		<div className="result">
