@@ -4,18 +4,20 @@
 	text-align: center;
 	h3{
 		font-size: 26px ;
-		letter-spacing: 4px;
+		// letter-spacing: 2px;
+		color:#973c3c;
+		margin-top: 10px;
 	}
 	p{
 		font-size: 16px;
 		font-weight: 500;
-
+		text-align: left;
+		color: $primary;
 		span{
-			color: $primary;
-			font-size: 22px;
+			color: rgb(233, 77, 4);
+			font-size: 18px;
 		}
 	}
-	
 
 	button{
 		background: linear-gradient(0deg, $primary 0.03%, $accent);
@@ -27,6 +29,10 @@
 		border: none;
 		margin-top: 15px;
 		cursor: pointer;
-	
+
+	}
+	table{
+		border: 1px solid $foreground;
+		margin-top: 10px;
 	}
 }

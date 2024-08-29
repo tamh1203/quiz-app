@@ -17,7 +17,7 @@ const Result = (props)=>{
 			name:name,
 			score : result.score,
 		};
-		let newHightScores = [...hightScores, score].sort((a,b)=> b.score= a.score)
+		let newHightScores = [...hightScores, score].sort((a,b) => b.score - a.score);
 		setHightScores(newHightScores);
 		setShowScore(true);
 		localStorage.setItem("hightScores", JSON.stringify(newHightScores));
@@ -33,10 +33,10 @@ const Result = (props)=>{
 		<div className="result">
 		<>
 		<h3>Kết quả thi</h3>
-			<p>Tổng số câu hỏi :<span>{questions.length}</span>  </p>
-			<p>Số điểm đạt được: <span>{result.score}</span> </p>
-			<p>Số câu trả lời đúng :<span>{result.correctAnswers}</span>  </p>
-			<p>Số câu trả lời  : <span>{result.wrongAnswers}</span> </p>
+			<p>Tổng số câu hỏi :<span> {questions.length}</span>  </p>
+			<p>Số điểm đạt được: <span> {result.score}</span> </p>
+			<p>Số câu trả lời đúng :<span> {result.correctAnswers}</span>  </p>
+			<p>Số câu trả lời  : <span> {result.wrongAnswers}</span> </p>
 			<button onClick={onTryAgain}> 
 			 Làm lại
 			</button>
@@ -53,7 +53,7 @@ const Result = (props)=>{
 		</>
 		:
 		<>
-		<table class="table table-hover">
+		<table className="table table-hover table-striped">
 			<thead>
 				<tr>
 				<th scope="col">Ranking</th>
@@ -66,7 +66,7 @@ const Result = (props)=>{
 				hightScores.map((hightScore, index)=>{
 					return(
 				<tr key={`${hightScore.scope}${index}`}>
-					<th	>{index + 1}</th>
+					<td scope="row"	>{index + 1}</td>
 					<td>{hightScore.name}</td>
 					<td>{hightScore.score}</td>
 				</tr>
