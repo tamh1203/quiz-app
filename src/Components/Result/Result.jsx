@@ -9,7 +9,7 @@ const Result = (props)=>{
 	const [showScore, setShowScore] = useState(false);
 
 	useEffect(()=>{
-		setHightScores(JSON.parse(localStorage.getItem("hightScores")));
+		setHightScores(JSON.parse(localStorage.getItem("hightScores")) || []);
 	},[])
 
 	const hanldeSaveScore = ()=>{
@@ -17,12 +17,12 @@ const Result = (props)=>{
 			name:name,
 			score : result.score,
 		};
-		const newHightScores = [...hightScores, score]
+		let newHightScores = [...hightScores, score].sort((a,b)=> b.score= a.score)
 		setHightScores(newHightScores);
 		setShowScore(true);
 		localStorage.setItem("hightScores", JSON.stringify(newHightScores));
-		console.log(newHightScores);
 	}
+
 	const onTryAgain =()=>{
 		props.setResult(resultInitalState); // set result => initalState
 		props.setShowResult(false);
@@ -36,9 +36,9 @@ const Result = (props)=>{
 			<p>Tổng số câu hỏi :<span>{questions.length}</span>  </p>
 			<p>Số điểm đạt được: <span>{result.score}</span> </p>
 			<p>Số câu trả lời đúng :<span>{result.correctAnswers}</span>  </p>
-			<p>Số câu trả lời sai : <span>{result.wrongAnswers}</span> </p>
+			<p>Số câu trả lời  : <span>{result.wrongAnswers}</span> </p>
 			<button onClick={onTryAgain}> 
-				Try Again
+			 Làm lại
 			</button>
 		</>
 		{!showScore ?
@@ -62,9 +62,10 @@ const Result = (props)=>{
 				</tr>
 			</thead>
 			<tbody>
-				{hightScores.map((hightScore, index)=>{
+				{hightScores && hightScores.length > 0 &&
+				hightScores.map((hightScore, index)=>{
 					return(
-				<tr key={`${hightScore.scope}${hightScore.scope}${index}`}>
+				<tr key={`${hightScore.scope}${index}`}>
 					<th	>{index + 1}</th>
 					<td>{hightScore.name}</td>
 					<td>{hightScore.score}</td>
