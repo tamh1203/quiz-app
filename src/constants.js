@@ -1,5 +1,11 @@
 export const jsQuizz = {
 	questions: [
+		{
+			question:
+			  "____ provide a way to pass data from one component to other fill and blank ?",
+			type: "FBI",
+			correctAnswer: "props",
+		  },
 	  {
 		question:
 		  "Which of the following is used in React.js to increase performance?",
@@ -26,9 +32,9 @@ export const jsQuizz = {
 	  {
 		question:
 		  "Identify the one which is used to pass data to components from outside",
-		choices: ["Render with arguments", "setState", "PropTypes", "props"],
+		choices: ["Render with arguments", "setState", "PropTypes", "Props"],
 		type: "MCQs",
-		correctAnswer: "props",
+		correctAnswer: "Props",
 	  },
 	  {
 		question: "In which language is React.js written?",

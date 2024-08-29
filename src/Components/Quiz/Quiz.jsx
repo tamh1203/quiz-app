@@ -11,8 +11,9 @@ const Quiz = ({questions})=>{
 	const [result, setResult] = useState(resultInitalState);
 	const [showResult, setShowResult] = useState(false);
 	const [showAnswerTimer, setShowAnswerTimer] = useState(true);
+	const [inputAnswer, setInputAnswer] = useState('');
 
-	const {question, choices, correctAnswer} = questions[currentQuestion];
+	const {question, choices, correctAnswer, type} = questions[currentQuestion];
 
 	const onAnswerClick = (choices, index)=> {
 		setAnserIdx(index);
@@ -55,7 +56,42 @@ const Quiz = ({questions})=>{
 		setAnswer(false);
 		onClickNext(false);
 	}
-	
+    
+	const getAnswerUI =()=>{
+		if(type === "FBI"){
+			return <input 
+			value={inputAnswer}
+			onChange={hanldInputAnswer}
+			  />
+		}
+		return(
+			<ul>
+		{
+		choices && choices.length > 0 &&
+			choices.map((choices, index)=>{
+				return(
+					<li 
+						key={choices}
+						onClick={()=> onAnswerClick(choices, index)}
+						className={answerIdx === index ? "selected-answer" : null}
+						>
+						{choices}
+					</li>
+		)})
+		}
+	</ul>
+		)	
+	}
+
+	const hanldInputAnswer = (event)=>{
+		setInputAnswer(event.target.value);
+		if(event.target.value === correctAnswer ){
+			setAnswer(true);
+		}else{
+			setAnswer(false);
+		}
+	}
+
 	return(
 		<div className="quiz-container">
 		{!showResult ? 	
@@ -69,23 +105,10 @@ const Quiz = ({questions})=>{
 			<span className="active-question"> {currentQuestion + 1}</span>
 			<span className="total-question">/{questions.length}</span>
 			<h2>{question}</h2>
-				<ul>
-					{
-						choices.map((choices, index)=>{
-							return(
-							<li 
-								key={choices}
-								onClick={()=> onAnswerClick(choices, index)}
-								className={answerIdx === index ? "selected-answer" : null}
-							>
-								{choices}
-							</li>
-							)})
-					}
-				</ul>
+				{getAnswerUI()}
 			<div className="footer">
 				<button 
-					disabled={answerIdx===null}
+					disabled={answerIdx===null && !inputAnswer }
 					onClick={()=>onClickNext(answer)}
 					>
 					{currentQuestion === questions.length - 1 ? "Finish" : "Next"}
@@ -99,6 +122,7 @@ const Quiz = ({questions})=>{
 			result = {result}
 			setResult = {setResult}
 			setShowResult={setShowResult}
+			setInputAnswer={setInputAnswer}
 			 />
 	 </div>
 	 }

@@ -24,8 +24,6 @@ const AnswerTimer = ({duration, onTimeUp})=>{
             },1000);
         }
     },[counter])
-
-    console.log(counter);
     
     return(
         <div className='answer-timer-container'>
